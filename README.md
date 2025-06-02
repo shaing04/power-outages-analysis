@@ -2,7 +2,7 @@
 UCSD DSC 80 Data Science Project
 
 
-### insert github link here
+### [Github Link](https://shaing04.github.io/power-outages-analysis/)
 
 ## Analyzing Power Outages: 
 By: Susana Haing, Sonali Singh

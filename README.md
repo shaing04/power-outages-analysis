@@ -140,9 +140,9 @@ We also wanted to see the number of times each region experienced a specific typ
 ## Hypothesis Testing 
 We will be testing if the 'CAUSE.CATEGORY' has an affect on the length of a power outages. In particular, we will be testing if Severe Weather has an affect, and if it doesn't, we will test which 'CAUSE.CATEGORY' does have an affect.
 
-**Null Hypothesis:** Severe weather has no effect on the length of a power outage.
+**Null Hypothesis (H₀):** Severe weather has no effect on the length of a power outage.
 
-**Alternative Hypothesis:** Severe weather has an effect on the length of a power outage (either causing a shorter or longer poewr outage).
+**Alternative Hypothesis (H₁):** Severe weather has an effect on the length of a power outage (either causing a shorter or longer poewr outage).
 
 **Test Statistic:** Difference in means
 
@@ -160,9 +160,82 @@ Since the p-value is 0.0, we can conclude that we will REJECT the null hypothesi
 
 ## Modeling 
 ## Framing a Prediction Problem 
+Our model will attempt to predict the length of a power outage duration in a regression model. 
+
+The metric we plan to use to evaluate the model is the Mean Absolute Error as we will be able to see how the average prediction error in minutes. 
+
+At the time of prediction,we will know the Cause Category, NERC Region, Climate Category, Month, Year, and US State. 
+
 ## Baseline Model 
+Our model is a linear regression model used to predict the 'OUTAGE.DURATION' column (in minutes) based on several categorical and quantitative features. The features include: CAUSE.CATEGORY, NERC.REGION, U.S._STATE, and CLIMATE.CATEGORY, which were one-hot encoded, as well as MONTH and YEAR, which were standardized to improve model performance.
+
+We chose these features because outage duration is influenced by the type of cause (such as severe weather or equipment failure), the region and state, which capture geographical influences and the month and year, which account for the seasonal and yearly trends of power outages. 
+
+The model's performance was okay, with a mean absolute error (MAE) of ~2823 minutes, and a RMSE of approximately 7388 minutes. The model's R² score was 0.1081.
+
+
 ## Final Model
+Changes added to the baseline model to improve it: 
+---
+###  1. We added two new features to give our model more contextual info:
+
+- **START_HOUR**  
+  - This was taken from the `OUTAGE.START` datetime column to represent the hour of the day that an outage would begin  
+  - This is useful because in real life, outages that start at night (e.g., 4 AM) may be resolved slower than those during daytime hours because more people are up and moving around to attend to the issue.
+
+- **POPDEN_URBAN (Transformed)**  
+  - This is a numeric column representing the urban population density of the affected area.  
+  - We transformed it using a **QuantileTransformer**, which converts the original skewed distribution into a uniform distribution because it helps spread out the values evenly between 0 and 1. This makes it easier to recognize the relationships even when the original data is not as even. 
+
+---
+
+###  2. Preprocessing Updates
+
+We improved our preprocessing pipeline to better handle the different types of features:
+
+- **StandardScaler** was applied to:
+  - `MONTH`, `YEAR`, and our new `START_HOUR` column.
+  - This standardizes the numeric values so they have a mean of 0 and standard deviation of 1, helping linear models work more effectively.
+
+- **QuantileTransformer** was applied to:
+  - `POPDEN_URBAN`, to reduce skew and improve learnability.
+
+---
+
+###  Consistent Train/Test Split
+
+We used the **same train/test split** (`random_state = 42`) for both the baseline and final models.  
+This ensures our performance improvements come from better feature engineering and preprocessing — not from differences in the data used for evaluation.
+
+### Final Model Results: 
+MAE: 2622.27 minutes
+RMSE: 7221.41 minutes
+R²: 0.1501
+
+These modifications gave our final model more relevant and well-scaled information, allowing it to make more accurate predictions and we know this because our  **MAE and RMSE decreased**, and **R² increased**, indicating improved performance over the baseline.
+
+
 ## Fairness Analysis
 
+We are evaluating fairness in our final regression model by comparing its prediction error (using RMSE) across two groups based on the `CAUSE.CATEGORY` column:
 
-## Conclusion
+- Group X: Outages caused by **Severe Weather**
+- Group Y: Outages caused by **Equipment Failure**
+
+#### Null Hypothesis (H₀):
+Our model is **fair**. The RMSE is similar for both groups, and any observed difference in prediction error is due to random chance.
+
+#### Alternative Hypothesis (H₁):
+Our model is **unfair**. The RMSE is **higher for the Severe Weather group** compared to the Equipment Failure group, indicating worse model performance for that group.
+## What can we conclude from this graph? 
+
+We compared our model’s performance on outages caused by:
+- **Severe Weather**
+- **Equipment Failure**
+
+Using RMSE as the error metric and a permutation test, we found:
+
+- **Observed RMSE Difference**: 3077.0 minutes (Severe – Equipment)
+- **P-value**: 0.0933
+
+The model appears to perform worse for severe weather outages, with RMSE over 3,000 minutes higher on average. While the result is not statistically significant at the 0.05 level, the relatively low p-value suggests a possible performance disparity worth further investigation in future modeling.

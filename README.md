@@ -153,7 +153,7 @@ To do so, we will be performing a permutation test to determine whether our hypo
 </div>
 
 Results: 
-Observed difference: 2537.81 minutes
+Observed difference: 2399.86 minutes
 Permutation p-value: 0.0000
 
 Since the p-value is 0.0, we can conclude that we will REJECT the null hypothesis as severe weather does significantly affect outage duration. 
@@ -171,7 +171,7 @@ Our model is a linear regression model used to predict the 'OUTAGE.DURATION' col
 
 We chose these features because outage duration is influenced by the type of cause (such as severe weather or equipment failure), the region and state, which capture geographical influences and the month and year, which account for the seasonal and yearly trends of power outages. 
 
-The model's performance was okay, with a mean absolute error (MAE) of ~2823 minutes, and a RMSE of approximately 7388 minutes. The model's R² score was 0.1081.
+The model's performance was poor, with a mean absolute error (MAE) of ~3195 minutes, and a RMSE of ~7264 minutes. The model's R² score was -0.1081. This is possible due to underfitting or another issue.
 
 
 ## Final Model
@@ -215,7 +215,7 @@ R²: 0.1501
 These modifications gave our final model more relevant and well-scaled information, allowing it to make more accurate predictions and we know this because our  **MAE and RMSE decreased**, and **R² increased**, indicating improved performance over the baseline.
 
 <div style="width: 100%; margin: 0 auto;">
-  <iframe src="assets/final_model.html" width="100%" height="400" frameborder = "0"></iframe>
+  <iframe src="assets/final_model_2.html" width="100%" height="400" frameborder = "0"></iframe>
 </div>
 
 
@@ -239,11 +239,11 @@ We compared our model’s performance on outages caused by:
 
 Using RMSE as the error metric and a permutation test, we found:
 
-- **Observed RMSE Difference**: 3077.0 minutes (Severe – Equipment)
+- **Observed RMSE Difference**: -16469.4 minutes (Severe – Equipment)
 - **P-value**: 0.0933
 
 <div style="width: 100%; margin: 0 auto;">
-  <iframe src="assets/fairness_analysis.html" width="100%" height="400" frameborder = "0"></iframe>
+  <iframe src="assets/fairness_analysis_2.html" width="100%" height="400" frameborder = "0"></iframe>
 </div>
 
-The model appears to perform worse for severe weather outages, with RMSE over 3,000 minutes higher on average. While the result is not statistically significant at the 0.05 level, the relatively low p-value suggests a possible performance disparity worth further investigation in future modeling.
+The model appears to perform worse for severe weather outages, with RMSE difference over -16,000 minutes higher on average. While the result is not statistically significant at the 0.05 level, the relatively low p-value suggests a possible performance disparity worth further investigation in future modeling.

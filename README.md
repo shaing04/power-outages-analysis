@@ -135,6 +135,41 @@ We also wanted to see the number of times each region experienced a specific typ
 </div>
 
 ## Methods of Missingness 
+This section explores how outage durations differ depending on the underlying cause—specifically comparing *Severe Weather* events to all *Other Causes*. Our goal was to test whether outages attributed to severe weather tend to last longer than those caused by other factors.
+
+Using a **two-sample t-test** and visual comparisons, we evaluated both central tendency (mean/median) and distribution spread.
+
+
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/missingness_proportion.html" width="100%" height="400" frameborder = "0"></iframe>
+</div>
+
+#### 🔹 Boxplot Insights
+The boxplot comparing outage durations shows a clear visual separation between the two groups:
+
+- **Severe Weather** outages have a **higher median** and a **wider interquartile range (IQR)**, indicating both longer and more variable durations.
+- The **notch** around each median provides a visual 95% confidence interval. The lack of overlap between the two notches suggests the medians are significantly different.
+- **Outliers** in both groups exist, but severe weather has more extreme values—supporting the idea of longer disruptions in those events.
+
+#### 🔹 Histogram Insights
+The histogram presents a full distribution comparison:
+
+- The **red histogram** (Severe Weather) shows a distribution skewed to the right, with a peak around **50–100 hours** and a **long tail** extending beyond **500 hours**.
+- The **blue histogram** (Other Causes) is sharply peaked around **20–40 hours**, with most durations being much shorter and more consistent.
+- This contrast illustrates not just a shift in average duration, but a fundamental difference in the **shape and spread** of the distributions.
+
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/missingness_box.html" width="100%" height="400" frameborder = "0"></iframe>
+</div>
+
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/missingness_hist.html" width="100%" height="400" frameborder = "0"></iframe>
+</div>
+
+#### 🧠 Conclusion
+The combination of these visualizations offers compelling evidence that **severe-weather-related outages are longer and more variable** than outages from other causes. This supports rejection of the null hypothesis and emphasizes the need for more robust infrastructure and response strategies during severe weather events.
+
+Understanding these differences allows policymakers and utility companies to prioritize mitigation efforts where they're most needed.
 
 
 ## Hypothesis Testing 
@@ -208,11 +243,11 @@ We used the **same train/test split** (`random_state = 42`) for both the baselin
 This ensures our performance improvements come from better feature engineering and preprocessing — not from differences in the data used for evaluation.
 
 ### Final Model Results: 
-MAE: 2622.27 minutes
-RMSE: 7221.41 minutes
-R²: 0.1501
+MAE: 2934.65 minutes
+RMSE: 7422.66 minutes
+R²: 0.0449
 
-These modifications gave our final model more relevant and well-scaled information, allowing it to make more accurate predictions and we know this because our  **MAE and RMSE decreased**, and **R² increased**, indicating improved performance over the baseline.
+These modifications gave our final model more relevant and well-scaled information, allowing it to make more accurate predictions and we know this because our  **MAE decreased**, and **RMSE and R² increased**, indicating improved performance over the baseline.
 
 <div style="width: 100%; margin: 0 auto;">
   <iframe src="assets/final_model_2.html" width="100%" height="400" frameborder = "0"></iframe>
@@ -240,10 +275,10 @@ We compared our model’s performance on outages caused by:
 Using RMSE as the error metric and a permutation test, we found:
 
 - **Observed RMSE Difference**: -16469.4 minutes (Severe – Equipment)
-- **P-value**: 0.0933
+- **P-value**: 0.9211
 
 <div style="width: 100%; margin: 0 auto;">
   <iframe src="assets/fairness_analysis_2.html" width="100%" height="400" frameborder = "0"></iframe>
 </div>
 
-The model appears to perform worse for severe weather outages, with RMSE difference over -16,000 minutes higher on average. While the result is not statistically significant at the 0.05 level, the relatively low p-value suggests a possible performance disparity worth further investigation in future modeling.
+While the model appears to perform worse on severe weather outages based on raw RMSE, the high p-value indicates no meaningful evidence that the model performs differently across these causes. The observed difference is likely due to chance, and we cannot conclude a performance disparity from this test.

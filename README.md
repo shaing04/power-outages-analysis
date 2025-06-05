@@ -4,8 +4,7 @@ UCSD DSC 80 Data Science Project
 
 ### [Github Link](https://github.com/shaing04/power-outages-analysis)
 
-## Analyzing Power Outages: 
-By: Susana Haing, Sonali Singh
+### By: Susana Haing, Sonali Singh
 
 ## Introduction 
 In this project, we examined [data](https://engineering.purdue.edu/LASCI/research-data/outages) through Purdue University's Laboratory for Advancing Sustainable Critical Infrastructure of power outages in the United States from January 2000 to July 2016. 

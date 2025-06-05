@@ -98,7 +98,9 @@ We also replaced any 0 values in the 'OUTAGE.DURATION' column with NaN values. T
 ### Univariate Analysis
 Now let's take a look at how the power outages are distributed across the 50 states. We can visualize this with a choropleth map, which will show by color, the number of power outages each state has and also show which states have the most and least number of power outages.
 
-<iframe src="assets/outages_map.html" width="100%" height="600"></iframe>
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/outages_map.html" width="100%" height="600" style="border: none;"></iframe>
+</div>
 
 Next, we wanted to see how the number of power outages have changed over time. 
 

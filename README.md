@@ -113,6 +113,8 @@ We also wanted to see the number of power outages across the different climate r
 
 ### Bivariate Analysis
 
+testing changes -- not properly updating? 
+
 ### Grouping and Aggregation 
 
 

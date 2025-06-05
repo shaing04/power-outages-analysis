@@ -214,6 +214,10 @@ R²: 0.1501
 
 These modifications gave our final model more relevant and well-scaled information, allowing it to make more accurate predictions and we know this because our  **MAE and RMSE decreased**, and **R² increased**, indicating improved performance over the baseline.
 
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/final_model.html" width="100%" height="400" frameborder = "0"></iframe>
+</div>
+
 
 ## Fairness Analysis
 
@@ -237,5 +241,9 @@ Using RMSE as the error metric and a permutation test, we found:
 
 - **Observed RMSE Difference**: 3077.0 minutes (Severe – Equipment)
 - **P-value**: 0.0933
+
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/fairness_analysis.html" width="100%" height="400" frameborder = "0"></iframe>
+</div>
 
 The model appears to perform worse for severe weather outages, with RMSE over 3,000 minutes higher on average. While the result is not statistically significant at the 0.05 level, the relatively low p-value suggests a possible performance disparity worth further investigation in future modeling.

@@ -138,7 +138,25 @@ We also wanted to see the number of times each region experienced a specific typ
 
 
 ## Hypothesis Testing 
+We will be testing if the 'CAUSE.CATEGORY' has an affect on the length of a power outages. In particular, we will be testing if Severe Weather has an affect, and if it doesn't, we will test which 'CAUSE.CATEGORY' does have an affect.
 
+**Null Hypothesis:** Severe weather has no effect on the length of a power outage.
+
+**Alternative Hypothesis:** Severe weather has an effect on the length of a power outage (either causing a shorter or longer poewr outage).
+
+**Test Statistic:** Difference in means
+
+To do so, we will be performing a permutation test to determine whether our hypothesis holds or not. 
+
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/permutation_test.html" width="100%" height="400" frameborder = "0"></iframe>
+</div>
+
+Results: 
+Observed difference: 2537.81 minutes
+Permutation p-value: 0.0000
+
+Since the p-value is 0.0, we can conclude that we will REJECT the null hypothesis as severe weather does significantly affect outage duration. 
 
 ## Modeling 
 ## Framing a Prediction Problem 

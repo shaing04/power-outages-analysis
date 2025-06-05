@@ -84,8 +84,7 @@ For our analysis, we will be focusing on the following variables.
     </div>
 
 
-## Exploratory Data Analysis
-### Data Cleaning 
+## Data Cleaning and Exploratory Data Analysis 
 The original dataset comes with 57 total different variables, but we will focus only on the above columns for analysis and relevance sake.
 
 Additionally, rather than having the start and restoration columns be separated by date and time, we will condense them into one column each. 
@@ -94,7 +93,7 @@ So 'OUTAGE.START.DATE' and 'OUTAGE.START.TIME' will be condensed into 'OUTAGE.ST
 We also replaced any 0 values in the 'OUTAGE.DURATION' column with NaN values. This is because if it is listed in the dataset, then it must be a major power outage, and any major power outage having a duration of 0 minutes makes no sense, so the 0 was more likely to have resulted from some sort of error and is therefore, an inaccurate representation of the data.
 
 
-### Univariate Analysis
+## Univariate Analysis
 Now let's take a look at how the power outages are distributed across the 50 states. We can visualize this with a choropleth map, which will show by color, the number of power outages each state has and also show which states have the most and least number of power outages.
 
 <div style="width: 100%; margin: 0 auto;">
@@ -111,7 +110,7 @@ We also wanted to see the number of power outages across the different climate r
     <iframe src="assets/outages_climate_region.html" width = "100%" height = "600" frameborder = "0"></iframe>
 </div>
 
-### Bivariate Analysis
+## Bivariate Analysis
 
 First, we wanted to take a look at how the 'OUTAGE.DURATIONS' were distributed across the different 'CLIMATE.REGION's.
 <div style="width: 100%; margin: 0 auto;">
@@ -123,8 +122,17 @@ We also wanted to look at how the outage durations were distributed across the d
   <iframe src="assets/outage_duration_cause_cat.html" width="100%" height="600" frameborder = "0"></iframe>
 </div>
 
-### Grouping and Aggregation 
+## Grouping and Aggregation 
 
+First we wanted to take a look at comparing the average duration of each cause category with the median, max, and also see the total number of outages in each cause category.
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets\agg_summary_table.html" width="100%" height="600" frameborder = "0"></iframe>
+</div>
+
+We also wanted to see the number of times each region experienced a specific type of power outage.
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/pivot_table.html" width="100%" height="600" frameborder = "0"></iframe>
+</div>
 
 ## Methods of Missingness 
 
@@ -133,10 +141,10 @@ We also wanted to look at how the outage durations were distributed across the d
 
 
 ## Modeling 
-### Framing a Prediction Problem 
-### Baseline Model 
-### Final Model
-### Fairness Analysis
+## Framing a Prediction Problem 
+## Baseline Model 
+## Final Model
+## Fairness Analysis
 
 
 ## Conclusion

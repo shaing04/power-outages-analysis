@@ -149,7 +149,7 @@ We will be testing if the 'CAUSE.CATEGORY' has an affect on the length of a powe
 To do so, we will be performing a permutation test to determine whether our hypothesis holds or not. 
 
 <div style="width: 100%; margin: 0 auto;">
-  <iframe src="assets/permutation_test.html" width="100%" height="400" frameborder = "0"></iframe>
+  <iframe src="assets/permutation_test_2.html" width="100%" height="400" frameborder = "0"></iframe>
 </div>
 
 Results: 

@@ -100,7 +100,13 @@ Now let's take a look at how the power outages are distributed across the 50 sta
 
 <iframe src="/outages_map.html" width="100%" height="600"></iframe>
 
+Next, we wanted to see how the number of power outages have changed over time. 
 
+<iframe src="/outages_overtime.html", width = "100%", height = "600%"></iframe>
+
+We also wanted to see the number of power outages across the different climate regions. 
+
+<iframe src="/outages_clime_region.html", width = "100%", height = "600%"></iframe>
 
 
 ### Bivariate Analysis

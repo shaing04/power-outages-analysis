@@ -113,7 +113,15 @@ We also wanted to see the number of power outages across the different climate r
 
 ### Bivariate Analysis
 
-testing changes -- not properly updating? 
+First, we wanted to take a look at how the 'OUTAGE.DURATIONS' were distributed across the different 'CLIMATE.REGION's.
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/outages_duration_climateregion.html" width="100%" height="600" frameborder = "0"></iframe>
+</div>
+
+We also wanted to look at how the outage durations were distributed across the different cause categories. 
+<div style="width: 100%; margin: 0 auto;">
+  <iframe src="assets/outages_duration_cause_cat.html" width="100%" height="600" frameborder = "0"></iframe>
+</div>
 
 ### Grouping and Aggregation 
 

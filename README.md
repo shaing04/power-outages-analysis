@@ -158,7 +158,7 @@ Permutation p-value: 0.0000
 
 Since the p-value is 0.0, we can conclude that we will REJECT the null hypothesis as severe weather does significantly affect outage duration. 
 
-## Modeling 
+
 ## Framing a Prediction Problem 
 Our model will attempt to predict the length of a power outage duration in a regression model. 
 
@@ -222,12 +222,12 @@ We are evaluating fairness in our final regression model by comparing its predic
 - Group X: Outages caused by **Severe Weather**
 - Group Y: Outages caused by **Equipment Failure**
 
-#### Null Hypothesis (H₀):
+### Null Hypothesis (H₀):
 Our model is **fair**. The RMSE is similar for both groups, and any observed difference in prediction error is due to random chance.
 
-#### Alternative Hypothesis (H₁):
+### Alternative Hypothesis (H₁):
 Our model is **unfair**. The RMSE is **higher for the Severe Weather group** compared to the Equipment Failure group, indicating worse model performance for that group.
-## What can we conclude from this graph? 
+### What can we conclude from this graph? 
 
 We compared our model’s performance on outages caused by:
 - **Severe Weather**

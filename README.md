@@ -126,12 +126,12 @@ We also wanted to look at how the outage durations were distributed across the d
 
 First we wanted to take a look at comparing the average duration of each cause category with the median, max, and also see the total number of outages in each cause category.
 <div style="width: 100%; margin: 0 auto;">
-  <iframe src="assets\agg_summary_table.html" width="100%" height="600" frameborder = "0"></iframe>
+  <iframe src="assets\agg_summary_table.html" width="100%" height="400" frameborder = "0"></iframe>
 </div>
 
 We also wanted to see the number of times each region experienced a specific type of power outage.
 <div style="width: 100%; margin: 0 auto;">
-  <iframe src="assets/pivot_table.html" width="100%" height="600" frameborder = "0"></iframe>
+  <iframe src="assets/pivot_table.html" width="100%" height="400" frameborder = "0"></iframe>
 </div>
 
 ## Methods of Missingness 
